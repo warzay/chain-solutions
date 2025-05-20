@@ -23,21 +23,14 @@ jobs:
         with:
           node-version: 20.x
 
-      - name: Install specific Yarn version
+      - name: Install Yarn
         run: npm install -g yarn@1.22.22
 
-      - name: Clear Yarn cache
-        run: |
-          yarn cache clean
-          rm -rf ~/.cache/yarn
-
       - name: Install dependencies
-        run: yarn install --force
+        run: yarn install --frozen-lockfile
 
-      - name: Build and upload your site
-        uses: withastro/action@v3
-        with:
-          package-manager: yarn
+      - name: Build the site
+        run: yarn build
 
   deploy:
     needs: build
@@ -46,6 +39,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
