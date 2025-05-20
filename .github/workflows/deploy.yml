@@ -32,6 +32,9 @@ jobs:
       - name: Build the site
         run: yarn build
 
+      - name: Remove symbolic links
+        run: find ./dist -type l -delete
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
