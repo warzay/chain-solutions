@@ -14,9 +14,9 @@ const config = defineConfig({
 
   output: 'static',
 
-  // build: {
-  //   assets: 'assets',
-  // },
+  build: {
+    assets: 'assets',
+  },
 
   experimental: {
     fonts: [
