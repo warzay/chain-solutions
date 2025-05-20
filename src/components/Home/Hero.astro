@@ -1,0 +1,40 @@
+---
+import Heading from '@components/Base/Heading.astro';
+import Button from '@components/Base/Button.astro';
+import HeroImage from '@assets/images/hero-bg-device.png';
+import { Picture } from 'astro:assets';
+---
+
+<section
+  class='bg-brand-orange-900 relative overflow-hidden pb-8 text-white sm:h-screen sm:max-h-[320px] md:max-h-[480px] lg:max-h-[560px] xl:max-h-[648px]'
+>
+  <div class='container relative z-10 grid h-full grid-cols-12'>
+    <div class='~pt-0/22.5 col-span-12 flex flex-col gap-8 sm:col-span-7'>
+      <Heading size='2xl' class='text-white'>
+        The Business Ecosystem for Foodservice Industry
+      </Heading>
+
+      <div class='leading-8 ~text-base/2xl'>
+        The evolution solution feeding your business 24/7.
+      </div>
+
+      <div class='flex flex-col gap-8 sm:flex-row sm:items-center'>
+        <Button variant='secondary' class='order-last self-start sm:order-none'
+          >Schedule Demo</Button
+        >
+        <a
+          href='#'
+          class='tracking-002 text-lg font-medium underline-offset-4 hover:underline'
+          >Learn More</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <Picture
+    src={HeroImage}
+    formats={['avif', 'webp']}
+    alt='The Business Ecosystem for Foodservice Industry'
+    class='absolute bottom-0 right-0 z-0 hidden h-auto w-5/12 max-w-full object-cover object-right-bottom sm:block'
+  />
+</section>

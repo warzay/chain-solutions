@@ -1,0 +1,57 @@
+---
+import Heading from '../Base/Heading.astro';
+
+const useCases = [
+  {
+    title: 'Full-Service Restaurants:',
+    text: 'From casual dining to fine dining, CSS helps managing your supply chain and ordering, and handling back-end logistics, allowing you to focus on providing a premium dining experience.',
+  },
+  {
+    title: 'Quick Service Restaurants (QSRs):',
+    text: 'Perfect for fast-paced environments, QSRs thrive on speed and convenience. CSS helps streamline your order management and supply chain, ensuring that you can deliver fast service to your customers without compromising quality.',
+  },
+  {
+    title: 'Catering Services:',
+    text: 'Whether you’re handling weddings, corporate events, or social gatherings, CSS offers software to help you order from best vendors with lowest pricing.',
+  },
+  {
+    title: 'Food Courts:',
+    text: 'Managing multiple food outlets can be challenging but with CSS you can oversee operation remote with correct items purchased from the best vendors.',
+  },
+  {
+    title: 'Hotel and Resort Foodservice:',
+    text: 'CSS simplifies foodservice management for hotels and resorts, enabling you to manage everything from fine dining to casual poolside snacks. Our platform streamlines operations to maintain top-notch service across diverse dining options.',
+  },
+  {
+    title: 'Institutional Catering:',
+    text: 'Whether for schools, hospitals, or other institutions, CSS assists in efficiently managing large-scale meal programs, ensuring timely deliveries, nutritional standards, and budget adherence, all while providing excellent service.',
+  },
+];
+---
+
+<section class='bg-white ~py-11/16'>
+  <div class='container'>
+    <Heading tag='h2' size='xl' class='sm:text-center'
+      >30 The Ideal Solution for
+    </Heading>
+
+    <div class='grid grid-cols-1 gap-10 ~mt-5/12.5 md:grid-cols-2'>
+      {
+        useCases.map(item => (
+          <div class='flex flex-col rounded-xl bg-white shadow-sm'>
+            <Heading
+              tag='h3'
+              size='lg'
+              class='border-brand-gray-100 border-b border-solid p-6 leading-tight'
+            >
+              {item.title}
+            </Heading>
+            <p class='px-5 pb-8 pt-6 text-base font-light text-brand-gray-900'>
+              {item.text}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

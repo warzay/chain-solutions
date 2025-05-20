@@ -1,0 +1,25 @@
+---
+import { Picture } from 'astro:assets';
+import logoWhite from '@assets/images/logo/logo-white.png';
+import logoOrange from '@assets/images/logo/logo-orange.png';
+
+interface Props {
+  class?: string;
+  width?: number;
+  height?: number;
+  color?: string;
+}
+
+const { color = 'white', class: className = '' } = Astro.props as Props;
+
+const logo = color === 'white' ? logoWhite : logoOrange;
+---
+
+<a href='/'>
+  <Picture
+    src={logo}
+    formats={['avif', 'webp']}
+    alt='Logo'
+    class={`${className}`}
+  />
+</a>

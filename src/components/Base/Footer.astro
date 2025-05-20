@@ -1,0 +1,46 @@
+---
+import Logo from '@components/Base/Logo.astro';
+import Navigation from '@components/Base/Navigation.astro';
+
+const siteName = Astro.siteName || 'CSS Cloud Solutions';
+---
+
+<footer class='~pb-13.5/12.5 ~pt-13.5/22.5 bg-brand-gray-900 text-white'>
+  <div class='container'>
+    <div
+      class='flex flex-col gap-8 pb-12.5 sm:flex-row sm:items-center sm:justify-between sm:gap-0'
+    >
+      <Logo class='w-44.5' color='orange' />
+      <Navigation
+        inactive='text-white hover:underline hover:text-brand-orange-900'
+        active='text-white hover:underline hover:text-brand-orange-900'
+      />
+    </div>
+
+    <div
+      class='border-brand-gray-800 text-brand-gray-500 flex flex-col justify-between gap-8 border-solid pt-5 text-sm font-light sm:flex-row sm:gap-0 sm:border-t-2'
+    >
+      <div class='flex items-center gap-1'>
+        &copy; <span id='footer-date'></span>
+        {siteName}. All rights reserved.
+      </div>
+
+      <div class='order-first flex items-center gap-8 sm:order-last'>
+        <a
+          href='#'
+          class='underline-offset-4 transition-colors hover:text-white hover:underline'
+          >Privacy Policy</a
+        >
+        <a
+          href='#'
+          class='underline-offset-4 transition-colors hover:text-white hover:underline'
+          >Terms of Service</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+  document.getElementById('footer-date').innerHTML = new Date().getFullYear();
+</script>

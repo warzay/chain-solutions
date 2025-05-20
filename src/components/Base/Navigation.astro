@@ -1,0 +1,48 @@
+---
+interface Props {
+  class?: string;
+  ariaLabel?: string;
+  active?: string;
+  inactive?: string;
+  navClass?: string;
+}
+
+const {
+  inactive = 'text-white hover:underline',
+  active = 'text-white hover:underline',
+  class: className = '',
+  navClass = '',
+  ariaLabel = 'Main Navigation',
+} = Astro.props as Props;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/solutions', label: 'Solutions' },
+  { href: '/about-us', label: 'About Us' },
+  { href: '/contact-us', label: 'Contact Us' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class={`${className}`}>
+  <ul
+    class=`flex flex-col ~sm/2xl:~gap-5/14 sm:flex-row sm:items-center ${navClass}`
+    aria-label={ariaLabel}
+  >
+    {
+      links.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class={`text-lg font-medium tracking-002 underline-offset-4 transition-colors ${
+              currentPath === link.href ? active : inactive
+            }`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

@@ -1,0 +1,104 @@
+---
+import Heading from '../Base/Heading.astro';
+import Button from '@components/Base/Button.astro';
+import FaqIcon from '@assets/images/icons/faq.svg';
+import ArrowIcon from '@assets/images/icons/mono/arrow.svg';
+import { Picture } from 'astro:assets';
+
+const faqs = [
+  {
+    question: 'Is CSS a marketplace?',
+    answer:
+      'Chain Service Solutions offers quick and efficient support to its users, including in-app chat, email or phone support. Premium suppliers have a dedicated team to onboard all their customers to CSS, as well as personalized training for their team.',
+  },
+  {
+    question: 'What type of support does CSS offer?',
+    answer:
+      'Chain Service Solutions offers quick and efficient support to its users, including in-app chat, email or phone support. Premium suppliers have a dedicated team to onboard all their customers to CSS, as well as personalized training for their team.',
+  },
+  {
+    question: 'How much does CSS cost?',
+    answer:
+      'Chain Service Solutions offers quick and efficient support to its users, including in-app chat, email or phone support. Premium suppliers have a dedicated team to onboard all their customers to CSS, as well as personalized training for their team.',
+  },
+  {
+    question: 'Is CSS a marketplace?',
+    answer:
+      'Chain Service Solutions offers quick and efficient support to its users, including in-app chat, email or phone support. Premium suppliers have a dedicated team to onboard all their customers to CSS, as well as personalized training for their team.',
+  },
+  {
+    question: 'How much does CSS cost?',
+    answer:
+      'Chain Service Solutions offers quick and efficient support to its users, including in-app chat, email or phone support. Premium suppliers have a dedicated team to onboard all their customers to CSS, as well as personalized training for their team.',
+  },
+  {
+    question: 'Is CSS a marketplace?',
+    answer:
+      'Chain Service Solutions offers quick and efficient support to its users, including in-app chat, email or phone support. Premium suppliers have a dedicated team to onboard all their customers to CSS, as well as personalized training for their team.',
+  },
+];
+---
+
+<section class='bg-brand-blue-400 pb-24 pt-20'>
+  <div class='gap-10.5 container grid items-start md:grid-cols-[200px_1fr]'>
+    <div
+      class='flex flex-wrap items-center justify-between gap-14 self-start md:flex-col md:items-start md:justify-center'
+    >
+      <div
+        class='flex h-20 w-20 items-center justify-center rounded-full bg-white'
+      >
+        <Picture src={FaqIcon} formats={['avif', 'webp']} alt='FAQs' />
+      </div>
+
+      <Heading
+        tag='h2'
+        size='2xl'
+        class='order-first font-light uppercase md:order-none'>Faq</Heading
+      >
+
+      <Button class='w-full md:w-auto'>Schedule Demo</Button>
+    </div>
+
+    <div
+      class='hs-accordion-group flex flex-col gap-2'
+      data-hs-accordion-always-open
+    >
+      {
+        faqs.map((faq, index) => (
+          <div
+            class={`hs-accordion rounded-xl bg-white ${
+              index === 0 ? 'active' : ''
+            }`}
+            id={`faq-heading-${index}`}
+          >
+            <button
+              class='hs-accordion-toggle border-brand-gray-100 ~py-3.75/6 flex w-full items-center gap-4 border-b border-solid leading-tight ~px-3.5/6'
+              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-controls={`faq-collapse-${index}`}
+            >
+              <ArrowIcon class='hs-accordion-active:hidden block stroke-brand-orange-900' />
+              <ArrowIcon class='hs-accordion-active:block hidden rotate-180 stroke-brand-gray-900' />
+
+              <Heading tag='h3' size='lg' class='text-left'>
+                {faq.question}
+              </Heading>
+            </button>
+
+            <div
+              id={`faq-collapse-${index}`}
+              class={`hs-accordion-content w-full overflow-hidden transition-[height] duration-300 ${
+                index !== 0 ? 'hidden' : ''
+              }`}
+              role='region'
+              aria-labelledby={`faq-heading-${index}`}
+            >
+              <p class='~pl-3/16.5 ~pb-5.5/8 text-lg font-light text-brand-gray-900 ~pt-3/6 ~pr-3/20'>
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+---
+import Heading from '@components/Base/Heading.astro';
+import Button from '@components/Base/Button.astro';
+import SaleDiscountIcon from '@assets/images/icons/sales-discount.svg';
+import FileStorageIcon from '@assets/images/icons/file-storage.svg';
+import PieChartIcon from '@assets/images/icons/pie-chart.svg';
+import PieChartIcon2 from '@assets/images/icons/pie-chart-2.svg';
+import DeliveryTruckIcon from '@assets/images/icons/delivery-truck.svg';
+import Setting from '@assets/images/icons/setting.svg';
+import Comments from '@assets/images/icons/comments.svg';
+import Customer from '@assets/images/icons/customer.svg';
+
+const features = [
+  {
+    icon: SaleDiscountIcon,
+    title: 'AI Empowered Customer Engagement',
+    description:
+      'Timely reminders for delivery dates and suggestions for new product options',
+  },
+  {
+    icon: FileStorageIcon,
+    title: 'Invoice Administration',
+    description: 'Digitizing your paper work to keep your records stain free',
+  },
+  {
+    icon: PieChartIcon,
+    title: 'Cross-platform Application',
+    description: 'A friendly platform as diverse as your devices.',
+  },
+  {
+    icon: PieChartIcon2,
+    title: 'Order Management',
+    description:
+      'Simplify your entire order process from creation to fulfillment',
+  },
+  {
+    icon: DeliveryTruckIcon,
+    title: 'Integrated Delivery Process',
+    description:
+      'Offer customizable delivery options that fit each client’s needs',
+  },
+  {
+    icon: Setting,
+    title: 'Enriched Catalog Experience',
+    description:
+      'Your product catalog stays fresh and organized for fast product identification',
+  },
+  {
+    icon: Comments,
+    title: 'Customer Experience',
+    description:
+      'AI driven language recognition and communication across multiple languages',
+  },
+  {
+    icon: Customer,
+    title: 'Team Coordination',
+    description: 'Keep your team close and supervise orders from any location',
+  },
+];
+---
+
+<section class='text-brand-gray-900 ~py-11/16'>
+  <div class='container flex flex-col items-center gap-8'>
+    <div class='flex flex-col items-center gap-4'>
+      <Heading tag='h2' size='xl'> How We Help Your Business</Heading>
+
+      <p
+        class='text-center text-lg font-light leading-snug text-brand-gray-900'
+      >
+        Your secret sauce to success
+      </p>
+    </div>
+
+    <div
+      class='grid grid-cols-1 gap-x-10 gap-y-12.5 sm:grid-cols-2 lg:grid-cols-4'
+    >
+      {
+        features.map(feature => (
+          <div class='flex flex-row items-center gap-8 sm:flex-col sm:text-center'>
+            <div class='shrink'>
+              <feature.icon />
+            </div>
+
+            <div class=''>
+              <Heading tag='h3' size='lg' class='leading-tight'>
+                {feature.title}
+              </Heading>
+              <p class='text-brand-gray-500 mt-6 text-base font-light leading-normal'>
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <Button class='mt-4.5 self-center'>Schedule Demo</Button>
+  </div>
+</section>
