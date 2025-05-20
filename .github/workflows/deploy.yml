@@ -24,9 +24,14 @@ jobs:
           node-version: 22.14.0
 
       - name: Clear Yarn cache
-        run: yarn cache clean
+        run: |
+          yarn cache clean
+          rm -rf ~/.cache/yarn # Удаляем кэш вручную
 
-      - name: Install, build, and upload your site
+      - name: Install dependencies
+        run: yarn install --force
+
+      - name: Build and upload your site
         uses: withastro/action@v3
         with:
           package-manager: yarn
