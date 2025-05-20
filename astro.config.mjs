@@ -7,15 +7,16 @@ import './src/types/astro.d.ts';
 
 /** @type {import('astro').AstroUserConfig} */
 const config = defineConfig({
+  // @ts-ignore
   siteName: 'CSS Cloud Solutions',
   site: 'https://vladi-devv.github.io',
   base: 'chain-solutions',
 
   output: 'static',
 
-  build: {
-    assets: 'assets',
-  },
+  // build: {
+  //   assets: 'assets',
+  // },
 
   experimental: {
     fonts: [
