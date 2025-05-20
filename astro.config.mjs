@@ -8,7 +8,8 @@ import './src/types/astro.d.ts';
 /** @type {import('astro').AstroUserConfig} */
 const config = defineConfig({
   siteName: 'CSS Cloud Solutions',
-  site: 'https://example.com',
+  site: 'https://vladi-devv.github.io',
+  base: 'chain-solutions',
 
   output: 'static',
 
