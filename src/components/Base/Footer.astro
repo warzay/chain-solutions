@@ -3,9 +3,10 @@ import Logo from '@components/Base/Logo.astro';
 import Navigation from '@components/Base/Navigation.astro';
 
 const siteName = Astro.siteName || 'CSS Cloud Solutions';
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<footer class='~pb-13.5/12.5 ~pt-13.5/22.5 bg-brand-gray-900 text-white'>
+<footer class='bg-brand-gray-900 text-white ~pt-13.5/22.5 ~pb-13.5/12.5'>
   <div class='container'>
     <div
       class='flex flex-col gap-8 pb-12.5 sm:flex-row sm:items-center sm:justify-between sm:gap-0'
@@ -18,7 +19,7 @@ const siteName = Astro.siteName || 'CSS Cloud Solutions';
     </div>
 
     <div
-      class='border-brand-gray-800 text-brand-gray-500 flex flex-col justify-between gap-8 border-solid pt-5 text-sm font-light sm:flex-row sm:gap-0 sm:border-t-2'
+      class='flex flex-col justify-between gap-8 border-solid border-brand-gray-800 pt-5 text-sm font-light text-brand-gray-500 sm:flex-row sm:gap-0 sm:border-t-2'
     >
       <div class='flex items-center gap-1'>
         &copy; <span id='footer-date'></span>
@@ -27,12 +28,13 @@ const siteName = Astro.siteName || 'CSS Cloud Solutions';
 
       <div class='order-first flex items-center gap-8 sm:order-last'>
         <a
-          href='#'
+          href=`${basePath}/terms-of-service/privacy-policy`
+          '
           class='underline-offset-4 transition-colors hover:text-white hover:underline'
           >Privacy Policy</a
         >
         <a
-          href='#'
+          href=`${basePath}/terms-of-service`
           class='underline-offset-4 transition-colors hover:text-white hover:underline'
           >Terms of Service</a
         >

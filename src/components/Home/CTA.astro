@@ -2,26 +2,48 @@
 import Heading from '@components/Base/Heading.astro';
 import Button from '@components/Base/Button.astro';
 import IpadImage from '@assets/images/ipad.png';
+import MacbookImage from '@assets/images/macbook-air-m2-silver-flatten.png';
 import { Picture } from 'astro:assets';
+
+interface Props {
+  variant?: 'ipad' | 'macbook';
+}
+
+const { variant = 'ipad' } = Astro.props as Props;
+
+const variantConfig = {
+  ipad: {
+    image: IpadImage,
+    bgColor: 'bg-brand-gray-200',
+    textColor: 'text-brand-gray-900',
+  },
+  macbook: {
+    image: MacbookImage,
+    bgColor: 'bg-brand-blue-900',
+    textColor: 'text-white',
+  },
+};
+
+const { image, bgColor, textColor } = variantConfig[variant];
 ---
 
 <section class='bg-white'>
   <div
-    class='bg-brand-gray-200 border-brand-gray-100 ~h-77.75/96 container relative overflow-hidden rounded-2xl border border-solid px-0 pt-10 sm:pr-22.5'
+    class=`container relative overflow-hidden rounded-2xl border border-solid border-brand-gray-100 ${bgColor} px-5 pt-10 ~h-77.75/96 sm:pr-22.5`
   >
     <Picture
-      src={IpadImage}
+      src={image}
       formats={['avif', 'webp']}
       alt='Schedule your demo for additional features'
-      class='absolute right-0 z-0 h-1/2 max-w-full object-cover object-right-top ~bottom-5 ~left-5/12.5 sm:bottom-0 sm:right-auto sm:h-auto sm:w-5/12'
+      class='absolute -bottom-7 z-0 mx-auto h-1/2 w-full max-w-[calc(100%-2.5rem)] object-cover object-right-top ~left-5/12.5 sm:bottom-0 sm:right-auto sm:h-auto sm:w-5/12'
     />
     <div
-      class='bg-brand-gray-200 relative z-10 m-auto flex max-w-lg flex-col items-center justify-center px-5 ~gap-4/8 ~py-0/20 sm:mb-0 sm:ml-auto sm:mr-0 sm:mt-0'
+      class=`relative z-10 m-auto flex max-w-lg flex-col items-center justify-center ${bgColor} ~gap-4/8 ~py-0/20 sm:mb-0 sm:ml-auto sm:mr-0 sm:mt-0`
     >
       <Heading
         tag='h2'
         size='2xl'
-        class='!~text-2.5xl/4.5xl font-bold leading-normal text-brand-gray-900 sm:font-light'
+        class=`font-bold ${textColor} !~text-2.5xl/4.5xl !leading-normal sm:font-light`
         >Schedule your demo for additional features</Heading
       >
       <Button class='w-full sm:w-auto'>Schedule Demo</Button>

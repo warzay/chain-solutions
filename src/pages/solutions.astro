@@ -1,10 +1,77 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Heading from '@components/Base/Heading.astro';
+import Hero from '@components/Home/Hero.astro';
+import CTA from '@components/Home/CTA.astro';
+import Button from '@components/Base/Button.astro';
+
+const solutions = [
+  {
+    title: 'AI Assistant',
+    description: `CSS unleashes the power of artificial intelligence to extract unlimited amounts of actionable insights from your business data.
+    Imagine having an assistant that is never wrong and never takes a day off. CSS AI assistant understands the languages of your kitchen.
+    Foodservice today represents a broad diversity of workers and languages. CSS is there to help your business communicate for success.`,
+  },
+  {
+    title: 'Order Management',
+    description: `During onboarding, your data will be imported to ensure your account is ready to use from day one. Ordering from vendors is easy and accurate,
+    leveraging your historical data—and invoices are generated quickly from the same information for a seamless experience.`,
+  },
+  {
+    title: 'Custom Digital Catalog',
+    description: `CSS creates customized vendor catalogs for easy online ordering. Each catalog can include detailed vendor information and real product images
+    for a rich, intuitive shopping experience.`,
+  },
+  {
+    title: 'Invoicing & Returns',
+    description: `Invoicing is always accurate and automatically updated by the vendor, while customers can easily initiate returns when needed.
+    Digital invoices are securely stored and can be printed anytime for your records.`,
+  },
+  {
+    title: 'Team Management',
+    description: `Administrators can assign a variety of permissions based on different roles and responsibilities within the business.
+    This feature also supports businesses with multiple locations, ensuring flexible and secure access control.`,
+  },
+];
 ---
 
 <Layout title='Solutions'>
-  <section class='container text-brand-gray-900 ~py-11/16'>
-    <Heading size='2xl'>Solutions</Heading>
+  <Hero
+    variant='solutions'
+    topText='Our Solutions'
+    title='Foodservice Business Made Simple'
+    description=''
+  />
+
+  <section class='container flex flex-col text-brand-gray-900 ~py-11/16'>
+    <div class='pb-10 pt-2.5'>
+      <Heading size='2xl' class='mb-4 font-light'>CSS Solutions</Heading>
+      <p class='text-lg leading-snug text-brand-gray-900'>
+        24/7 Onsite or Remote Management of Your Business with Your Data at Your
+        Fingertips
+      </p>
+      <Button class='mt-4'>Schedule Demo</Button>
+    </div>
+
+    <div class='mt-8 flex flex-col gap-9'>
+      {
+        solutions.map(solution => (
+          <div class='bg-brand-solutions border-brand-lightGray rounded-xl border border-solid p-6 text-brand-gray-900'>
+            <Heading class='mb-3 !text-3.5xl font-light'>
+              {solution.title}
+            </Heading>
+
+            <p class='text-lg font-light leading-snug'>
+              {solution.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+    <Button class='mt-4 !self-center'>Schedule Demo</Button>
   </section>
+
+  <div class='pb-15'>
+    <CTA variant='macbook' />
+  </div>
 </Layout>

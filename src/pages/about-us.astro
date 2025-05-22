@@ -1,10 +1,23 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Heading from '@components/Base/Heading.astro';
+import CTA from '@components/Home/CTA.astro';
 ---
 
 <Layout title='About Us'>
-  <section class='container text-brand-gray-900 ~py-11/16'>
-    <Heading size='2xl'>About Us</Heading>
+  <section class='h-full bg-brand-blue-bg text-brand-gray-900 ~py-11/16'>
+    <div class='container'>
+      <div class='text-lg leading-snug'>CSS Solutions</div>
+      <Heading size='2xl' class='mb-4 font-light'>About Us</Heading>
+
+      <div class='bg-light mt-4'>
+        We are a company dedicated to providing top-notch solutions for your
+        needs. Our team of experts is here to help you achieve your goals.
+      </div>
+    </div>
   </section>
+
+  <div class='pb-15'>
+    <CTA variant='macbook' />
+  </div>
 </Layout>

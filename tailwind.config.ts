@@ -104,7 +104,10 @@ const config: Config = {
             900: '#EE7035',
           },
 
+          lightGray: '#EEE',
+
           blue: {
+            bgSolutions: '#fbfcff',
             bg: '#F4F7FE',
             400: '#AAC0F1',
             900: '#2A61DB',
@@ -125,7 +128,7 @@ const config: Config = {
 
       fontSize: {
         '1.5xl': ['1.375rem', '1.375rem'],
-        '2.5xl': ['1.625rem', '1.625rem'],
+        '2.5xl': ['1.625rem', '2rem'],
         '3.5xl': ['2rem', '2.5rem'],
         '4.5xl': ['2.5rem', '2.5rem'],
         '5.5xl': ['3.5rem', '3.5rem'],
@@ -149,6 +152,7 @@ const config: Config = {
         '4.5': '1.125rem',
         '5.5': '1.375rem',
         '7.5': '1.875rem',
+        '8.5': '2.125rem',
         '10.5': '2.625rem',
         '11.5': '2.875rem',
         '12.5': '3.125rem',
@@ -164,6 +168,8 @@ const config: Config = {
         '50': '12.5rem',
         '68.75': '17.1875rem',
         '77.75': '19.375rem',
+        '80': '20rem',
+        '162': '40.5rem',
       },
 
       gap: {

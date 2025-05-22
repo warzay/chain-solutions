@@ -5,30 +5,42 @@ import Header from '@components/Base/Header.astro';
 import Footer from '@components/Base/Footer.astro';
 import LocalScripts from '@components/Base/LocalScripts.astro';
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 interface Props {
   title: string;
   class?: string;
+  id?: string;
+  [key: string]: any;
 }
 
-const { title = 'My Astro Site', class: bodyClass = '' } = Astro.props;
+const {
+  title = 'My Astro Site',
+  class: bodyClass = '',
+  id = 'home',
+  ...rest
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='en' class='h-full scroll-smooth'>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <link rel='sitemap' href='/sitemap-index.xml' />
+    <link rel='icon' type='image/svg+xml' href=`${basePath}/favicon.svg` />
+    <link rel='sitemap' href=`${basePath}/sitemap-index.xml` />
     <title>{title}</title>
     <Font cssVariable='--font-plus-jakarta' preload />
   </head>
 
-  <body class={bodyClass}>
-    <div id='app' class='flex min-h-screen flex-col text-neutral-950'>
+  <body class=`h-full ${bodyClass}` id={id} {...rest}>
+    <div
+      id='app'
+      class='flex min-h-screen flex-col scroll-smooth text-neutral-950'
+    >
       <Header />
 
-      <main id='main' class='flex-grow' role='main'>
+      <main id='main' class='h-full flex-grow' role='main'>
         <slot />
       </main>
 

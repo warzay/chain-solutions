@@ -12,13 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // document.querySelectorAll('[data-hs-dropdown]').forEach((el) => {
   //   new Dropdown(el as IHTMLElementPopper);
   // });
-  document.querySelectorAll('[data-hs-collapse]').forEach(el => {
-    new Collapse(el as HTMLElement);
-  });
+  const collapses = document.querySelectorAll('[data-hs-collapse]');
+  if (collapses.length > 0) {
+    collapses.forEach(el => {
+      new Collapse(el as HTMLElement);
+    });
+  }
 
-  document.querySelectorAll('[data-hs-accordion]').forEach(el => {
-    new Accordion(el as HTMLElement);
-  });
+  const accordions = document.querySelectorAll('[data-hs-accordion]');
+  if (accordions.length > 0) {
+    accordions.forEach(el => {
+      new Accordion(el as HTMLElement);
+    });
+  }
   // document.querySelectorAll('[data-hs-overlay]').forEach((el) => {
   //   new Overlay(el as HTMLElement);
   // });

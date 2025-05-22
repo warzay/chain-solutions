@@ -16,6 +16,7 @@ interface CommonProps {
   size?: 'md';
   ariaLabel?: string;
   class?: string;
+  [key: string]: any;
 }
 
 type Props = (ButtonProps | LinkProps) & CommonProps;
