@@ -101,6 +101,8 @@ const config: Config = {
       colors: {
         brand: {
           orange: {
+            500: '#F7B89A',
+            800: '#f17c3d',
             900: '#EE7035',
           },
 
@@ -131,7 +133,7 @@ const config: Config = {
         '2.5xl': ['1.625rem', '2rem'],
         '3.5xl': ['2rem', '2.5rem'],
         '4.5xl': ['2.5rem', '2.5rem'],
-        '5.5xl': ['3.5rem', '3.5rem'],
+        '5.5xl': ['3.5rem', '4.5rem'],
       },
 
       lineHeight: {

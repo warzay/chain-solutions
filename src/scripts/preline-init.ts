@@ -1,5 +1,6 @@
 import Accordion from '@preline/accordion';
 import Collapse from '@preline/collapse';
+import Overlay from '@preline/overlay';
 
 // import Dropdown from '@preline/dropdown';
 // import Overlay from '@preline/overlay';
@@ -23,6 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (accordions.length > 0) {
     accordions.forEach(el => {
       new Accordion(el as HTMLElement);
+    });
+  }
+
+  const overlays = document.querySelectorAll('[data-hs-overlay]');
+  if (overlays.length > 0) {
+    overlays.forEach(el => {
+      new Overlay(el as HTMLElement);
     });
   }
   // document.querySelectorAll('[data-hs-overlay]').forEach((el) => {

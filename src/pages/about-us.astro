@@ -5,19 +5,65 @@ import CTA from '@components/Home/CTA.astro';
 ---
 
 <Layout title='About Us'>
-  <section class='h-full bg-brand-blue-bg text-brand-gray-900 ~py-11/16'>
+  <section
+    class='h-full text-brand-gray-900 ~pt-2.5/16 ~pb-10/16 sm:bg-brand-blue-bg'
+  >
     <div class='container'>
-      <div class='text-lg leading-snug'>CSS Solutions</div>
+      <div class='mb-2.5 text-lg leading-snug'>CSS Solutions</div>
       <Heading size='2xl' class='mb-4 font-light'>About Us</Heading>
 
-      <div class='bg-light mt-4'>
-        We are a company dedicated to providing top-notch solutions for your
-        needs. Our team of experts is here to help you achieve your goals.
+      <div
+        class='mt-10 rounded-3xl bg-white text-lg font-light leading-snug text-brand-gray-900 shadow-sm ~p-3/13.5 sm:shadow [&_p:not(:last-child)]:mb-7'
+      >
+        <p>
+          Please read these Terms of Use (these "Terms") carefully as they
+          govern your use of (which includes access to) Spotify's personalized
+          services for streaming music and other content, including all of our
+          websites and software applications that incorporate or link to these
+          Terms (collectively, the "Spotify Service") and any music, videos,
+          podcasts, or other material that is made available through the Spotify
+          Service (the "Content").
+        </p>
+
+        <p>
+          Use of the Spotify Service may be subject to additional terms and
+          conditions presented by Spotify, which are hereby incorporated by this
+          reference into these Terms.
+        </p>
+
+        <p>
+          By signing up for, or otherwise using, the Spotify Service, you agree
+          to these Terms. If you do not agree to these Terms, then you must not
+          use the Spotify Service or access any Content.
+        </p>
+
+        <p>
+          Service Provider These Terms are between you and Spotify AB,
+          Regeringsgatan 19, 111 53, Stockholm, Sweden.
+        </p>
+
+        <p>
+          Age and eligibility requirements In order to use the Spotify Service
+          and access any Content, you need to (1) be 13 years of age (or the
+          equivalent minimum age in your home country) or older, (2) have parent
+          or guardian consent if you are a minor in your home country; (3) have
+          the power to enter a binding contract with us and not be barred from
+          doing so under any applicable laws, and (4) reside in a country where
+          the Service is available. You also promise that any registration
+          information that you submit to Spotify is true, accurate, and
+          complete, and you agree to keep it that way at all times If you are a
+          minor in your home country, your parent or guardian will need to enter
+          into these Terms on your behalf. You can find additional information
+          regarding minimum age requirements in the registration process. If you
+          do not meet the minimum age requirements then Spotify will be unable
+          to register you as a user.
+        </p>
       </div>
     </div>
   </section>
 
-  <div class='pb-15'>
-    <CTA variant='macbook' />
-  </div>
+  <CTA
+    variant='macbook'
+    class='hidden ~pb-10/15 sm:block sm:bg-brand-blue-bg'
+  />
 </Layout>

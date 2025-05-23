@@ -22,7 +22,7 @@ import { Picture } from 'astro:assets';
       <Button
         id='playButton'
         ariaLabel='Play video'
-        class='w-16.25 !flex h-16 items-center justify-center self-center rounded-full bg-brand-orange-900 !p-0'
+        class='!flex h-16 w-16.25 items-center justify-center self-center rounded-full bg-brand-orange-900 !p-0'
       >
         <PlayIcon class='h-8 w-8 text-white' aria-label='Play icon' />
       </Button>
@@ -51,7 +51,7 @@ import { Picture } from 'astro:assets';
         ariaLabel='Close video'
         class='absolute right-4 top-4 z-10 cursor-pointer border-none bg-transparent text-2xl text-white hover:bg-transparent'
       >
-        <CloseIcon aria-label='Close icon' />
+        <CloseIcon aria-label='Close icon' class='stroke-white' />
       </Button>
 
       <iframe

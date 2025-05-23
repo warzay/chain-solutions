@@ -43,21 +43,29 @@ const solutions = [
     description=''
   />
 
-  <section class='container flex flex-col text-brand-gray-900 ~py-11/16'>
+  <section
+    class='container flex flex-col px-2 text-brand-gray-900 ~py-11/16 sm:px-7.5'
+  >
     <div class='pb-10 pt-2.5'>
       <Heading size='2xl' class='mb-4 font-light'>CSS Solutions</Heading>
       <p class='text-lg leading-snug text-brand-gray-900'>
         24/7 Onsite or Remote Management of Your Business with Your Data at Your
         Fingertips
       </p>
-      <Button class='mt-4'>Schedule Demo</Button>
+      <Button
+        aria-haspopup='dialog'
+        aria-expanded='false'
+        aria-controls='сalendly-modal'
+        data-hs-overlay='#сalendly-modal'
+        class='mt-4'>Schedule Demo</Button
+      >
     </div>
 
-    <div class='mt-8 flex flex-col gap-9'>
+    <div class='mt-8 flex flex-col ~gap-4/9'>
       {
         solutions.map(solution => (
-          <div class='bg-brand-solutions border-brand-lightGray rounded-xl border border-solid p-6 text-brand-gray-900'>
-            <Heading class='mb-3 !text-3.5xl font-light'>
+          <div class='bg-brand-solutions rounded-xl border border-solid border-brand-lightGray bg-brand-blue-bgSolutions p-6 text-brand-gray-900'>
+            <Heading class='mb-3 font-light !~text-1.5xl/3.5xl'>
               {solution.title}
             </Heading>
 
@@ -68,10 +76,16 @@ const solutions = [
         ))
       }
     </div>
-    <Button class='mt-4 !self-center'>Schedule Demo</Button>
+    <Button
+      aria-haspopup='dialog'
+      aria-expanded='false'
+      aria-controls='сalendly-modal'
+      data-hs-overlay='#сalendly-modal'
+      class='!self-center ~mt-12/7.5'>Schedule Demo</Button
+    >
   </section>
 
-  <div class='pb-15'>
+  <div class='~pb-10/15'>
     <CTA variant='macbook' />
   </div>
 </Layout>

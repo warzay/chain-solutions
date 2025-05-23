@@ -632,6 +632,11 @@
   resolved "https://registry.yarnpkg.com/@preline/collapse/-/collapse-2.6.0.tgz#05c1838fcbc61c31d2ef83ae65ca45e7dd492bf4"
   integrity sha512-0w/Gd5g2N81atuMhEikAyW/88yIk/Gt7wnrIMB5NZQry5CWj8SAf0kksb2wtFF5uakA/tnbSuXzeCcabbZe0uw==
 
+"@preline/overlay@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/overlay/-/overlay-2.6.0.tgz#112db2981d09ad3e96b204a96851b163a2dc931d"
+  integrity sha512-UHwvQ/urc9JXkepINlFUXYYZg6Z4FMKyN2YO/2Kn7mCbpY+QbXtoRBvq+8j9aC2MFOvV6HQhm1yLbCibt1qwFA==
+
 "@rollup/pluginutils@^5.1.4":
   version "5.1.4"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.1.4.tgz#bb94f1f9eaaac944da237767cdfee6c5b2262d4a"

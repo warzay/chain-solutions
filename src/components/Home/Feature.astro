@@ -85,7 +85,7 @@ const features = [
               <Heading tag='h3' size='lg' class='leading-tight'>
                 {feature.title}
               </Heading>
-              <p class='text-brand-gray-500 mt-6 text-base font-light leading-normal'>
+              <p class='mt-6 text-base font-light leading-normal text-brand-gray-500'>
                 {feature.description}
               </p>
             </div>
@@ -94,6 +94,12 @@ const features = [
       }
     </div>
 
-    <Button class='mt-4.5 self-center'>Schedule Demo</Button>
+    <Button
+      aria-haspopup='dialog'
+      aria-expanded='false'
+      aria-controls='сalendly-modal'
+      data-hs-overlay='#сalendly-modal'
+      class='mt-4.5 self-center'>Schedule Demo</Button
+    >
   </div>
 </section>

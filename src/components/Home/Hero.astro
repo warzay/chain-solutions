@@ -4,6 +4,7 @@ import Button from '@components/Base/Button.astro';
 import IpadMacbook from '@assets/images/ipad-macbook.png';
 import IpadIphone from '@assets/images/ipad-iphone.png';
 import { Picture } from 'astro:assets';
+import videoBg from '@assets/video/hero-background-optimize-720.mp4';
 
 interface Props {
   variant?: 'default' | 'solutions';
@@ -28,13 +29,15 @@ const size =
 ---
 
 <section
-  class=`relative overflow-hidden bg-brand-orange-900 pb-8 text-white sm:h-screen ${size}`
+  class=`relative overflow-hidden bg-brand-orange-800 pb-8 text-white sm:h-screen ${size}`
 >
   <div class='container relative z-10 grid h-full grid-cols-12'>
-    <div class='col-span-12 flex flex-col gap-8 ~pt-0/22.5 sm:col-span-7'>
+    <div
+      class={`${variant === 'solutions' ? 'sm:col-span-6' : 'sm:col-span-7'} flex flex-col ~pt-0/22.5 col-span-12`}
+    >
       {
         topText && (
-          <div class='text-brand-orange-200 text-sm font-medium uppercase tracking-wide'>
+          <div class='text-brand-orange-500 font-bold ~text-lg/2xl ~mb-0/2'>
             {topText}
           </div>
         )
@@ -44,18 +47,23 @@ const size =
         {title}
       </Heading>
 
-      <div class='leading-8 ~text-base/2xl'>
-        {description}
-      </div>
+      {description && <div class='leading-8 ~text-base/2xl'>{description}</div>}
 
-      <div class='flex flex-col gap-8 sm:flex-row sm:items-center'>
-        <Button variant='secondary' class='order-last self-start sm:order-none'
-          >Schedule Demo</Button
+      <div class='mt-14 flex flex-col gap-8 sm:flex-row sm:items-center'>
+        <Button
+          variant='secondary'
+          aria-haspopup='dialog'
+          aria-expanded='false'
+          aria-controls='сalendly-modal'
+          data-hs-overlay='#сalendly-modal'
+          class={`order-last self-start sm:order-none ${variant === 'solutions' ? 'w-full sm:w-auto' : ''}`}
+        >
+          Schedule Demo</Button
         >
         {
           variant === 'default' && (
             <a
-              href='#'
+              href='#solutions'
               class='text-lg font-medium tracking-002 underline-offset-4 hover:underline'
             >
               Learn More
@@ -66,10 +74,57 @@ const size =
     </div>
   </div>
 
-  <Picture
+  <!-- <Picture
     src={imageSrc}
     formats={['avif', 'webp']}
-    alt='The Business Ecosystem for Foodservice Industry'
+    alt={imageAlt}
     class='absolute bottom-0 right-0 z-0 hidden h-auto w-5/12 max-w-full object-cover object-right-bottom sm:block'
-  />
+  /> -->
+
+  <video
+    src={videoBg}
+    class={`${variant === 'solutions' ? '-bottom-[42%]' : '-bottom-[10%]'} absolute right-0 z-0 hidden h-auto w-1/2 max-w-full object-cover object-right-bottom sm:block`}
+    autoplay
+    muted
+    loop
+    playsinline></video>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const learnMoreLink = document.querySelector('a[href="#solutions"]');
+    const header = document.querySelector('header.sticky');
+
+    if (!learnMoreLink) {
+      console.warn('Element with href="#solutions" not found.');
+      return;
+    }
+
+    learnMoreLink.addEventListener('click', event => {
+      event.preventDefault();
+      const targetId = learnMoreLink.getAttribute('href')?.substring(1);
+
+      if (!targetId) {
+        console.warn('Target ID is not defined.');
+        return;
+      }
+
+      const target = document.querySelector(`#${targetId}`);
+
+      if (!target) {
+        console.warn(`Target element with ID "${targetId}" not found.`);
+        return;
+      }
+
+      const offset = header ? header.getBoundingClientRect().height : 0;
+
+      const targetPosition =
+        target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth',
+      });
+    });
+  });
+</script>

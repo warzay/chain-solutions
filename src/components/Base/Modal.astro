@@ -1,0 +1,59 @@
+---
+import CloseIcon from '@assets/images/icons/mono/close.svg';
+
+interface ModalProps {
+  id: string;
+  class?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const { id, size = 'md', class: className = '' } = Astro.props as ModalProps;
+
+const sizeClasses = {
+  sm: 'sm:max-w-sm',
+  md: 'md:max-w-2xl',
+  lg: 'lg:max-w-4xl',
+  xl: 'lg:max-w-6xl',
+}[size];
+
+// Значения заданы статично
+const modalClasses = `
+  hs-overlay z-[9999] pointer-events-none fixed start-0 top-0 hidden size-full overflow-y-auto overflow-x-hidden
+  hs-overlay-backdrop-open:bg-brand-gray-900/50
+  flex items-center
+`;
+
+const animationClasses = `
+  hs-overlay-animation-target opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500
+`;
+---
+
+<div
+  id={id}
+  class={modalClasses}
+  role='dialog'
+  tabindex='-1'
+  aria-labelledby={`${id}-label`}
+>
+  <div
+    class={`relative m-3 mt-0 ${animationClasses} sm:mx-auto sm:w-full ${sizeClasses} ${className}`}
+  >
+    <div
+      class='pointer-events-auto flex flex-col rounded-lg bg-white p-6 pb-10'
+    >
+      <button
+        type='button'
+        class='focus:outline-hidden absolute right-3 top-3 inline-flex size-6 items-center justify-center rounded-full disabled:pointer-events-none disabled:opacity-50'
+        aria-label='Close'
+        data-hs-overlay={`#${id}`}
+      >
+        <span class='sr-only'>Close</span>
+        <CloseIcon aria-label='Close' class='stroke-brand-gray-500' />
+      </button>
+
+      <div class='overflow-y-auto'>
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

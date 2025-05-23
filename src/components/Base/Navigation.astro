@@ -21,7 +21,7 @@ const links = [
   { href: `#home`, label: 'Home' },
   { href: `${basePath}/solutions`, label: 'Solutions' },
   { href: `${basePath}/about-us`, label: 'About Us' },
-  { href: `${basePath}/#`, label: 'Contact Us' },
+  { href: `#contacts-modal`, label: 'Contact Us' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -40,6 +40,9 @@ const currentPath = Astro.url.pathname;
             class={`text-lg font-medium tracking-002 underline-offset-4 transition-colors ${
               currentPath === link.href ? active : inactive
             }`}
+            {...(link.href === '#contacts-modal'
+              ? { 'data-hs-overlay': '#contacts-modal' }
+              : {})}
           >
             {link.label}
           </a>

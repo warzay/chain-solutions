@@ -4,12 +4,16 @@ import MenuIcon from '@assets/images/icons/mono/menu.svg';
 import CloseIcon from '@assets/images/icons/mono/close.svg';
 import Navigation from '@components/Base/Navigation.astro';
 import Button from '@components/Base/Button.astro';
+import Modal from '@components/Base/Modal.astro';
+import Heading from './Heading.astro';
 ---
 
-<header class='relative bg-brand-orange-900 text-white ~pt-6/9 ~pb-7.5/9'>
-  <div class='container flex items-center'>
+<header class='bg-brand-orange-800 sticky top-0 z-50 text-white transition-all'>
+  <div
+    class='header container relative flex h-full items-center transition-all ~pt-6/9 ~pb-7.5/9'
+  >
     <div class='flex items-center ~md/2xl:~gap-2/14'>
-      <Logo class='~sm/2xl:~w-43/68.75' />
+      <Logo class='~sm/2xl:~w-43/72' />
       <Navigation class='hidden lg:block' />
     </div>
     <div class='ml-auto hidden items-center gap-8 lg:flex'>
@@ -18,7 +22,13 @@ import Button from '@components/Base/Button.astro';
         class='text-lg font-medium tracking-002 underline-offset-4 hover:underline'
         >Log In</a
       >
-      <Button variant='secondary'>Schedule Demo</Button>
+      <Button
+        variant='secondary'
+        aria-haspopup='dialog'
+        aria-expanded='false'
+        aria-controls='сalendly-modal'
+        data-hs-overlay='#сalendly-modal'>Schedule Demo</Button
+      >
     </div>
 
     <div class='ml-auto flex items-center gap-4 lg:hidden'>
@@ -27,7 +37,7 @@ import Button from '@components/Base/Button.astro';
         class='hs-collapse-toggle'
         id='hs-navbar-example-collapse'
         aria-expanded='false'
-        aria-controls='hs-navbar-example'
+        aria-controls='#hs-navbar-example'
         aria-label='Toggle navigation'
         data-hs-collapse='#hs-navbar-example'
       >
@@ -51,9 +61,57 @@ import Button from '@components/Base/Button.astro';
 
   <div
     id='hs-navbar-example'
-    class='hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300'
+    class='hs-collapse hs-collapse-content hidden grow basis-full overflow-hidden transition-all duration-300'
     aria-labelledby='hs-navbar-example-collapse'
   >
     <Navigation navClass='sm:flex-col items-center pt-15 p-7.5 !gap-9' />
   </div>
 </header>
+
+<Modal id='сalendly-modal' size='xl'>
+  <div
+    class='calendly-inline-widget'
+    data-url='https://calendly.com/michael-chain-serve/css-demo-meeting'
+    style='min-width:320px;height:700px;'
+  >
+  </div>
+  <script
+    type='text/javascript'
+    src='https://assets.calendly.com/assets/external/widget.js'
+    async
+    is:inline></script>
+</Modal>
+
+<Modal id='contacts-modal' size='xl'>
+  <Heading tag='h2' size='2xl'>Contact Us</Heading>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, quos soluta
+    illo voluptate debitis provident obcaecati incidunt laudantium consectetur
+    qui placeat cum excepturi, mollitia exercitationem cumque suscipit culpa
+    vitae ipsum!
+  </p>
+</Modal>
+
+<script>
+  if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('.header') as HTMLElement;
+      if (!header) {
+        return;
+      }
+
+      const initialHeaderHeight = header.getBoundingClientRect().height;
+      const reducedHeaderHeight = initialHeaderHeight * 0.7;
+
+      header.style.height = `${initialHeaderHeight}px`;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > initialHeaderHeight) {
+          header.style.height = `${reducedHeaderHeight}px`;
+        } else {
+          header.style.height = `${initialHeaderHeight}px`;
+        }
+      });
+    });
+  }
+</script>
