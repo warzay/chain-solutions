@@ -37,7 +37,7 @@ const size =
     >
       {
         topText && (
-          <div class='text-brand-orange-500 font-bold ~text-lg/2xl ~mb-0/2'>
+          <div class='font-bold text-brand-orange-500 ~text-lg/2xl ~mb-0/2'>
             {topText}
           </div>
         )
@@ -47,7 +47,11 @@ const size =
         {title}
       </Heading>
 
-      {description && <div class='leading-8 ~text-base/2xl'>{description}</div>}
+      {
+        description && (
+          <div class='mt-8 leading-8 ~text-base/2xl'>{description}</div>
+        )
+      }
 
       <div class='mt-14 flex flex-col gap-8 sm:flex-row sm:items-center'>
         <Button
@@ -83,6 +87,7 @@ const size =
 
   <video
     src={videoBg}
+    poster={imageSrc.src}
     class={`${variant === 'solutions' ? '-bottom-[42%]' : '-bottom-[10%]'} absolute right-0 z-0 hidden h-auto w-1/2 max-w-full object-cover object-right-bottom sm:block`}
     autoplay
     muted

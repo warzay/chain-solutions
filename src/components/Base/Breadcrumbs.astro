@@ -1,0 +1,29 @@
+---
+import { Breadcrumbs as AstroBreadcrumbs } from 'astro-breadcrumbs';
+import 'astro-breadcrumbs/breadcrumbs.css';
+import ArrowIcon from '@assets/images/icons/mono/arrow.svg';
+---
+
+<AstroBreadcrumbs>
+  <ArrowIcon slot='separator' class='size-4 -rotate-90 stroke-brand-gray-500' />
+</AstroBreadcrumbs>
+
+<style>
+  :global(.c-breadcrumbs) {
+    --color-link-breadcrumbs: theme('colors.brand.gray.500');
+    --size-font-breadcrumbs: theme('fontSize.sm');
+    --spacing-vertical-separator-breadcrumbs: theme('spacing.1');
+    --display-ellipsis-breadcrumbs: none;
+    --visibility-truncated-breadcrumbs: hidden;
+    --position-truncated-breadcrumbs: absolute;
+    --color-truncated-button: var(--color-link-breadcrumbs);
+  }
+
+  :global(.c-breadcrumbs li:first-child a) {
+    @apply text-brand-orange-900;
+  }
+
+  :global(.c-breadcrumbs li a) {
+    @apply font-light;
+  }
+</style>

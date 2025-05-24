@@ -1252,6 +1252,11 @@ ast-types-flow@^0.0.8:
   resolved "https://registry.yarnpkg.com/ast-types-flow/-/ast-types-flow-0.0.8.tgz#0a85e1c92695769ac13a428bb653e7538bea27d6"
   integrity sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==
 
+astro-breadcrumbs@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/astro-breadcrumbs/-/astro-breadcrumbs-3.3.1.tgz#a0ed998b0a670f563dd1d3350582c3415c4d2a3a"
+  integrity sha512-O3wWzlc4HOU//ePefcwk2F4yQn830buVUVn6h7+sGmVq7+xvv9JmHTcmihU18ISte72ELnJlG2U8s58nIuPXfg==
+
 astro-eslint-parser@^1.0.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/astro-eslint-parser/-/astro-eslint-parser-1.2.2.tgz#e622776c7ec6819cb248e69aa6291504be92c8c4"

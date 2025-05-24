@@ -7,6 +7,11 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 // import plugin from 'tailwindcss/plugin';
 
+// interface TailwindPluginParams {
+//   addBase: (base: Record<string, Record<string, string>>) => void;
+//   theme: (path: string) => any;
+// }
+
 const config: Config = {
   content: {
     files: [
@@ -31,6 +36,19 @@ const config: Config = {
   },
 
   plugins: [
+    // plugin(({ addBase, theme }: TailwindPluginParams) => {
+    //   addBase({
+    //     ':root': {
+    //       '--color-link-breadcrumbs': theme('colors.brand.gray.900'),
+    //       '--size-font-breadcrumbs': theme('fontSize.sm')[0],
+    //       '--spacing-vertical-separator-breadcrumbs': theme('spacing.2'),
+    //       '--display-ellipsis-breadcrumbs': 'none',
+    //       '--visibility-truncated-breadcrumbs': 'hidden',
+    //       '--position-truncated-breadcrumbs': 'absolute',
+    //       '--color-truncated-button': 'var(--color-link-breadcrumbs)',
+    //     },
+    //   });
+    // }),
     /**
      * The official Tailwind CSS Typography plugin provides a set of prose classes you can use to add
      * beautiful typographic defaults to any vanilla HTML you don’t control, like HTML rendered from
@@ -181,6 +199,29 @@ const config: Config = {
       fontFamily: {
         sans: ['"var(--font-plus-jakarta)"', ...defaultTheme.fontFamily.sans],
       },
+      // typography: (theme: any) => ({
+      //   DEFAULT: {
+      //     css: {
+      typography: (theme: (path: string) => unknown) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': theme('colors.brand.gray.900'),
+            '--tw-prose-headings': theme('colors.brand.gray.900'),
+            '--tw-prose-links': theme('colors.brand.orange.900'),
+            fontSize: (theme('fontSize.lg') as [string, string])[0],
+            lineHeight: theme('lineHeight.snug'),
+            fontWeight: theme('fontWeight.light'),
+            maxWidth: '100%',
+
+            p: {
+              marginTop: 0,
+              '&:not(:last-child)': {
+                marginBottom: theme('spacing.6'),
+              },
+            },
+          },
+        },
+      }),
     },
   },
 };
