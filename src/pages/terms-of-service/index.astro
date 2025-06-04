@@ -2,11 +2,133 @@
 import Layout from '@layouts/Layout.astro';
 import Heading from '@components/Base/Heading.astro';
 import Breadcrumbs from '@components/Base/Breadcrumbs.astro';
+
+const termsContent = [
+  {
+    id: 'introduction',
+    title: 'Introduction',
+    content: `<p>Please read these Terms of Use (these "Terms") carefully as they govern your use of which includes access to Spotify's personalized services for streaming music and other content, including all of our websites and software applications that incorporate or link to these Terms (collectively, the "Spotify Service") and any music, videos, podcasts, or other material that is made available through the Spotify Service (the "Content").</p>`,
+  },
+  {
+    id: 'service-provided',
+    title: 'Service Provided by Us',
+    content: `<p>Use of the Spotify Service may be subject to additional terms and conditions presented by Spotify, which are hereby incorporated by this reference into these Terms.</p>
+              <p>By signing up for, or otherwise using, the Spotify Service, you agree to these Terms. If you do not agree to these Terms, then you must not use the Spotify Service or access any Content.</p>`,
+  },
+  {
+    id: 'your-use',
+    title: 'Your Use of the Service',
+    content: `<p>Service Provider<br>These Terms are between you and Spotify AB, Regeringsgatan 19, 111 53, Stockholm, Sweden.</p>
+              <p>Age and eligibility requirements</p>
+              <p>In order to use the Spotify Service and access any Content, you need to:</p>
+              <ul>
+                <li>be 13 years of age (or the equivalent minimum age in your home country) or older;</li>
+                <li>have parent or guardian consent if you are a minor in your home country;</li>
+                <li>have the power to enter a binding contract with us and not be barred from doing so under applicable laws;</li>
+                <li>reside in a country where the Service is available.</li>
+              </ul>
+              <p>You also promise that any registration information that you submit to Spotify is true, accurate, and complete, and you agree to keep it that way at all times. If you are a minor in your home country, your parent or guardian will need to enter into these Terms on your behalf.</p>
+              <p>You can find additional information regarding minimum age requirements in the registration process. If you do not meet the minimum age requirements then Spotify will be unable to register you as a user.</p>`,
+  },
+  {
+    id: 'property-rights',
+    title: 'Property Rights',
+    content: `<p>Please read these Terms of Use (these "Terms") carefully as they govern your use of which includes access to Spotify's personalized services for streaming music and other content, including all of our websites and software applications that incorporate or link to these Terms (collectively, the "Spotify Service") and any music, videos, podcasts, or other material that is made available through the Spotify Service (the "Content").</p>
+              <p>Use of the Spotify Service may be subject to additional terms and conditions presented by Spotify, which are hereby incorporated by this reference into these Terms.</p>
+              <p>By signing up for, or otherwise using, the Spotify Service, you agree to these Terms. If you do not agree to these Terms, then you must not use the Spotify Service or access any Content.</p>`,
+  },
+  {
+    id: 'customer-support',
+    title: 'Customer Support',
+    content: `<p>Service Provider<br>These Terms are between you and Spotify AB, Regeringsgatan 19, 111 53, Stockholm, Sweden.</p>
+              <p>Age and eligibility requirements</p>
+              <p>In order to use the Spotify Service and access any Content, you need to:</p>
+              <ul>
+                <li>be 13 years of age (or the equivalent minimum age in your home country) or older;</li>
+                <li>have parent or guardian consent if you are a minor in your home country;</li>
+                <li>have the power to enter a binding contract with us and not be barred from doing so under applicable laws;</li>
+                <li>reside in a country where the Service is available.</li>
+              </ul>
+              <p>You also promise that any registration information that you submit to Spotify is true, accurate, and complete, and you agree to keep it that way at all times. If you are a minor in your home country, your parent or guardian will need to enter into these Terms on your behalf.</p>
+              <p>You can find additional information regarding minimum age requirements in the registration process. If you do not meet the minimum age requirements then Spotify will be unable to register you as a user.</p>`,
+  },
+  {
+    id: 'problems-disputes',
+    title: 'Problems and Disputes',
+    content: `<p>Please read these Terms of Use (these "Terms") carefully as they govern your use of which includes access to Spotify's personalized services for streaming music and other content, including all of our websites and software applications that incorporate or link to these Terms (collectively, the "Spotify Service") and any music, videos, podcasts, or other material that is made available through the Spotify Service (the "Content").</p>`,
+  },
+];
 ---
 
 <Layout title='Terms of service'>
-  <section class='container text-brand-gray-900 ~py-11/16'>
-    <Breadcrumbs />
-    <Heading size='2xl'>Terms of service</Heading>
+  <section class='bg-brand-blue-bg text-brand-gray-900 ~pt-11/16'>
+    <div class='container'>
+      <div class='rounded-t-3xl bg-white p-6 shadow-xl ~pb-11/16'>
+        <Breadcrumbs />
+        <Heading size='1.5xl' class='mb-12 mt-4 !font-extrabold'
+          >Terms of Service</Heading
+        >
+
+        <div
+          id='hs-scrollspy-scrollable-parent-terms'
+          class='max-h-162 overflow-y-auto'
+        >
+          <div class='grid gap-8 md:grid-cols-12'>
+            <div class='md:col-span-3'>
+              <ul
+                class='sticky top-0 flex flex-col gap-8 [--scrollspy-offset:0]'
+                data-hs-scrollspy='#hs-scrollspy-terms'
+                data-hs-scrollspy-scrollable-parent='#hs-scrollspy-scrollable-parent-terms'
+              >
+                {
+                  termsContent.map(section => (
+                    <li>
+                      <a
+                        href={`#${section.id}`}
+                        class='flex items-center justify-between text-sm font-normal text-brand-gray-500 transition-colors hover:text-brand-orange-900 hs-scrollspy-active:text-brand-orange-900'
+                      >
+                        {section.title}
+                        <svg
+                          class='size-4 shrink-0'
+                          xmlns='http://www.w3.org/2000/svg'
+                          width='24'
+                          height='24'
+                          viewBox='0 0 24 24'
+                          fill='none'
+                          stroke='currentColor'
+                          stroke-width='2'
+                          stroke-linecap='round'
+                          stroke-linejoin='round'
+                        >
+                          <path d='m9 18 6-6-6-6' />
+                        </svg>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <div class='md:col-span-9'>
+              <div id='hs-scrollspy-terms'>
+                {
+                  termsContent.map(section => (
+                    <div id={section.id} class='mb-4'>
+                      <Heading tag='h2' size='lg' class='text-brand-gray-900'>
+                        {section.title}
+                      </Heading>
+                      <div
+                        class='mt-5 text-sm text-brand-gray-900 [&>p:not(:last-child)]:mb-4'
+                        set:html={section.content}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </Layout>

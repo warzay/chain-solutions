@@ -8,6 +8,7 @@ interface Props {
 interface SizeClasses {
   lg: string;
   xl: string;
+  '1.5xl': string;
   '2xl': string;
 }
 
@@ -17,6 +18,7 @@ const Tag = tag as keyof HTMLElementTagNameMap;
 const sizeClasses: SizeClasses = {
   lg: 'text-lg',
   xl: '~text-1.5xl/4.5xl',
+  '1.5xl': 'text-3.5xl',
   '2xl': '~text-3.5xl/5.5xl',
 };
 

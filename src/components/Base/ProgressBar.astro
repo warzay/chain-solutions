@@ -1,0 +1,46 @@
+---
+import 'nprogress/nprogress.css';
+---
+
+<script>
+  import NProgress from 'nprogress';
+
+  NProgress.configure({
+    showSpinner: false,
+    minimum: 0.08,
+    trickleSpeed: 200,
+  });
+
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const DELAY = 200;
+
+  document.addEventListener('astro:before-preparation', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => NProgress.start(), DELAY);
+  });
+
+  document.addEventListener('astro:after-swap', () => {
+    clearTimeout(timer);
+    NProgress.done();
+  });
+
+  document.addEventListener('astro:prepare-error', () => {
+    clearTimeout(timer);
+    NProgress.done();
+  });
+</script>
+
+<style>
+  #nprogress .bar {
+    background: #29d;
+    height: 3px;
+  }
+  #nprogress .peg {
+    box-shadow:
+      0 0 10px #29d,
+      0 0 5px #29d;
+  }
+  #nprogress .spinner {
+    display: none;
+  }
+</style>

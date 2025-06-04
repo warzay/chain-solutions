@@ -43,6 +43,11 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
   </div>
 </footer>
 
-<script is:inline>
-  document.getElementById('footer-date').innerHTML = new Date().getFullYear();
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const footerDate = document.getElementById('footer-date');
+    if (footerDate) {
+      footerDate.innerHTML = String(new Date().getFullYear());
+    }
+  });
 </script>

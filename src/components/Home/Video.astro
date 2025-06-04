@@ -66,7 +66,7 @@ import { Picture } from 'astro:assets';
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const playButton = document.getElementById('playButton');
     const closeButton = document.getElementById('closeButton');
     const modal = document.getElementById('videoModal');

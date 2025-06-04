@@ -1,10 +1,12 @@
 ---
 import '@styles/global.pcss';
 import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
+import ProgressBar from '@components/Base/ProgressBar.astro';
+import LoadingIndicator from 'astro-loading-indicator/component';
 import Header from '@components/Base/Header.astro';
 import Footer from '@components/Base/Footer.astro';
 import LocalScripts from '@components/Base/LocalScripts.astro';
-import Modal from '@components/Base/Modal.astro';
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -32,6 +34,10 @@ const {
     <link rel='sitemap' href=`${basePath}/sitemap-index.xml` />
     <title>{title}</title>
     <Font cssVariable='--font-plus-jakarta' preload />
+    <meta name='astro-view-transitions-fallback' content='none' />
+    <ClientRouter />
+    <LoadingIndicator color='#7e22ce' height='1rem' />
+    <!-- <ProgressBar /> -->
   </head>
 
   <body class=`h-full ${bodyClass}` id={id} {...rest}>
@@ -51,3 +57,9 @@ const {
     <LocalScripts />
   </body>
 </html>
+
+<style is:global>
+  :root .astro-loading-indicator {
+    z-index: 9999;
+  }
+</style>
