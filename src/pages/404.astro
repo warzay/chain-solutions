@@ -1,10 +1,38 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Heading from '@components/Base/Heading.astro';
+import Button from '@components/Base/Button.astro';
+import NotFoundBg from '@assets/images/not-found-bg.svg';
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<Layout title='404 page'>
-  <section class='container text-brand-gray-900 ~py-11/16'>
-    <Heading size='2xl'>404 page</Heading>
+<Layout title='Page Not Found' class='sm:bg-brand-blue-bg'>
+  <section
+    class='h-full text-brand-gray-900 ~pt-7.5/16 ~pb-7.5/40 sm:bg-brand-blue-bg'
+  >
+    <div class='container !px-0 xl:!px-7.5'>
+      <article class='~pt-8/30.5 ~pb-10/32.5 rounded-xl bg-white'>
+        <div class='mb-14'>
+          <NotFoundBg
+            class='block h-[81px] w-full'
+            preserveAspectRatio='xMidYMid slice'
+          />
+        </div>
+
+        <div class='flex flex-col px-10'>
+          <Heading size='1.5xl' class='mb-1 text-center'>
+            Page Not Found
+          </Heading>
+          <p class='text-center text-lg font-light text-brand-gray-500'>
+            We couldn’t find this page. Let’s get you back on track.
+          </p>
+
+          <Button href=`${basePath}/` class='mt-9 self-center'>
+            Go to Home Page
+          </Button>
+        </div>
+      </article>
+    </div>
   </section>
 </Layout>

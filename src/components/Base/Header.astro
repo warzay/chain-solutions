@@ -2,6 +2,7 @@
 import Logo from '@components/Base/Logo.astro';
 import MenuIcon from '@assets/images/icons/mono/menu.svg';
 import CloseIcon from '@assets/images/icons/mono/close.svg';
+import Email from '@assets/images/icons/mono/email.svg';
 import Navigation from '@components/Base/Navigation.astro';
 import Button from '@components/Base/Button.astro';
 import Modal from '@components/Base/Modal.astro';
@@ -83,14 +84,121 @@ import Heading from '@components/Base/Heading.astro';
     data-astro-rerun></script>
 </Modal>
 
-<Modal id='contacts-modal' size='xl'>
-  <Heading tag='h2' size='2xl'>Contact Us</Heading>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, quos soluta
-    illo voluptate debitis provident obcaecati incidunt laudantium consectetur
-    qui placeat cum excepturi, mollitia exercitationem cumque suscipit culpa
-    vitae ipsum!
-  </p>
+<Modal id='contacts-modal' size='lg'>
+  <div class='flex flex-col items-center'>
+    <div
+      class='size-26 mb-8 flex items-center justify-center rounded-full bg-brand-blue-bg'
+    >
+      <Email />
+    </div>
+
+    <Heading tag='h2' class='!text-2xl text-brand-gray-900'>Contact Us</Heading>
+
+    <form class='mt-6 w-full space-y-8'>
+      <div class='grid grid-cols-1 gap-8 sm:grid-cols-3'>
+        <div class='sm:col-span-2'>
+          <label
+            for='company-name'
+            class='block text-sm font-light text-brand-gray-500'
+          >
+            Company Name
+          </label>
+          <input
+            type='text'
+            id='company-name'
+            name='company-name'
+            class='form-input mt-1 block w-full rounded border-brand-gray-100 p-4 pr-3 pt-3.5 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
+            placeholder='Company Name'
+          />
+        </div>
+
+        <div class='sm:col-span-1'>
+          <label
+            for='company-size'
+            class='block text-sm font-light text-brand-gray-500'
+          >
+            Size of the company (optional)
+          </label>
+          <select
+            id='company-size'
+            name='company-size'
+            class='form-select mt-1 block w-full rounded border-brand-gray-100 bg-brand-blue-bg p-4 pr-3 pt-3.5 text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
+          >
+            <option>More than 1000</option>
+            <option>Less than 1000</option>
+          </select>
+        </div>
+
+        <div class='sm:col-span-1'>
+          <label
+            for='contact-name'
+            class='block text-sm font-light text-brand-gray-500'
+          >
+            Contact Name
+          </label>
+          <input
+            type='text'
+            id='contact-name'
+            name='contact-name'
+            class='form-input mt-1 block w-full rounded border-brand-gray-100 p-4 pr-3 pt-3.5 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
+            placeholder='Contact Name'
+          />
+        </div>
+
+        <div class='sm:col-span-1'>
+          <label
+            for='company-phone'
+            class='block text-sm font-light text-brand-gray-500'
+          >
+            Company Phone Number
+          </label>
+          <input
+            type='tel'
+            id='company-phone'
+            name='company-phone'
+            class='form-input mt-1 block w-full rounded border-brand-gray-100 p-4 pr-3 pt-3.5 text-base font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
+            placeholder='Company Phone Number'
+          />
+        </div>
+
+        <div class='sm:col-span-1'>
+          <label
+            for='work-email'
+            class='block text-sm font-light text-brand-gray-500'
+          >
+            Work Email
+          </label>
+          <input
+            type='email'
+            id='work-email'
+            name='work-email'
+            class='form-input mt-1 block w-full rounded border-brand-gray-100 p-4 pr-3 pt-3.5 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
+            placeholder='Work Email'
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          for='message'
+          class='block text-sm font-light text-brand-gray-500'
+        >
+          Message
+        </label>
+
+        <textarea
+          id='message'
+          name='message'
+          rows='6'
+          class='form-textarea mt-1 block w-full rounded border-brand-gray-100 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
+          placeholder='Message'></textarea>
+      </div>
+
+      <div class='flex justify-center'>
+        <Button type='submit' class=''> Send Message </Button>
+      </div>
+    </form>
+  </div>
 </Modal>
 
 <script>
