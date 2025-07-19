@@ -12,7 +12,7 @@ const config = defineConfig({
   site: 'https://vladi-devv.github.io',
   base: 'chain-solutions',
 
-  output: 'server',
+  output: 'static',
 
   build: {
     assets: 'assets',

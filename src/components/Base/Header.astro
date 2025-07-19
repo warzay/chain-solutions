@@ -89,7 +89,7 @@ import Heading from '@components/Base/Heading.astro';
 
     <Heading tag='h2' class='!text-2xl text-brand-gray-900'>Contact Us</Heading>
 
-    <form id='contact-form' class='mt-6 w-full space-y-8' action='/api/contact' method='POST'>
+    <form id='contact-form' class='mt-6 w-full space-y-8' action="https://formspree.io/f/movljavb" method='POST'>
       <div class='grid grid-cols-1 gap-8 sm:grid-cols-3'>
         <div class='sm:col-span-2'>
           <label
@@ -223,48 +223,25 @@ import Heading from '@components/Base/Heading.astro';
       }
     });
 
-    // Обработка отправки формы контактов
+    // Handle contact form submission
     const contactForm = document.getElementById('contact-form') as HTMLFormElement;
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
     const formMessage = document.getElementById('form-message') as HTMLDivElement;
 
     if (contactForm) {
-      contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Показываем состояние загрузки
+      contactForm.addEventListener('submit', (e) => {
+        // Show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
         formMessage.className = 'text-center text-sm hidden';
         
-        try {
-          const formData = new FormData(contactForm);
-          const response = await fetch('/api/contact', {
-            method: 'POST',
-            body: formData
-          });
-          
-          const result = await response.json();
-          
-          if (result.success) {
-            // Successful submission
-            formMessage.className = 'text-center text-sm text-green-600';
-            formMessage.textContent = result.message;
-            contactForm.reset();
-          } else {
-            // Validation error
-            formMessage.className = 'text-center text-sm text-red-600';
-            formMessage.textContent = result.message;
-          }
-        } catch (error) {
-          // Network error
-          formMessage.className = 'text-center text-sm text-red-600';
-          formMessage.textContent = 'An error occurred while sending. Please try again later.';
-        } finally {
-          // Restore button
+        // Form will be submitted to Formspree automatically
+        // Formspree will handle the response and redirect
+        setTimeout(() => {
+          // Restore button after a short delay
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
-        }
+        }, 2000);
       });
     }
   });
