@@ -89,19 +89,20 @@ import Heading from '@components/Base/Heading.astro';
 
     <Heading tag='h2' class='!text-2xl text-brand-gray-900'>Contact Us</Heading>
 
-    <form class='mt-6 w-full space-y-8'>
+    <form id='contact-form' class='mt-6 w-full space-y-8' action='/api/contact' method='POST'>
       <div class='grid grid-cols-1 gap-8 sm:grid-cols-3'>
         <div class='sm:col-span-2'>
           <label
             for='company-name'
             class='block text-sm font-light text-brand-gray-500'
           >
-            Company Name
+            Company Name *
           </label>
           <input
             type='text'
             id='company-name'
             name='company-name'
+            required
             class='form-input mt-1 block w-full rounded border-brand-gray-100 p-4 pr-3 pt-3.5 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
             placeholder='Company Name'
           />
@@ -119,8 +120,9 @@ import Heading from '@components/Base/Heading.astro';
             name='company-size'
             class='form-select mt-1 block w-full rounded border-brand-gray-100 bg-brand-blue-bg p-4 pr-3 pt-3.5 text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
           >
-            <option>More than 1000</option>
-            <option>Less than 1000</option>
+            <option value=''>Select size</option>
+            <option value='More than 1000'>More than 1000</option>
+            <option value='Less than 1000'>Less than 1000</option>
           </select>
         </div>
 
@@ -129,12 +131,13 @@ import Heading from '@components/Base/Heading.astro';
             for='contact-name'
             class='block text-sm font-light text-brand-gray-500'
           >
-            Contact Name
+            Contact Name *
           </label>
           <input
             type='text'
             id='contact-name'
             name='contact-name'
+            required
             class='form-input mt-1 block w-full rounded border-brand-gray-100 p-4 pr-3 pt-3.5 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
             placeholder='Contact Name'
           />
@@ -161,12 +164,13 @@ import Heading from '@components/Base/Heading.astro';
             for='work-email'
             class='block text-sm font-light text-brand-gray-500'
           >
-            Work Email
+            Work Email *
           </label>
           <input
             type='email'
             id='work-email'
             name='work-email'
+            required
             class='form-input mt-1 block w-full rounded border-brand-gray-100 p-4 pr-3 pt-3.5 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
             placeholder='Work Email'
           />
@@ -178,20 +182,23 @@ import Heading from '@components/Base/Heading.astro';
           for='message'
           class='block text-sm font-light text-brand-gray-500'
         >
-          Message
+          Message *
         </label>
 
         <textarea
           id='message'
           name='message'
           rows='6'
+          required
           class='form-textarea mt-1 block w-full rounded border-brand-gray-100 font-light text-brand-gray-900 placeholder:text-brand-gray-500 focus:border-brand-orange-900 focus:ring-brand-orange-900'
           placeholder='Message'></textarea>
       </div>
 
       <div class='flex justify-center'>
-        <Button type='submit' class=''> Send Message </Button>
+        <Button type='submit' class='' id='submit-btn'> Send Message </Button>
       </div>
+      
+      <div id='form-message' class='text-center text-sm hidden'></div>
     </form>
   </div>
 </Modal>
@@ -215,5 +222,50 @@ import Heading from '@components/Base/Heading.astro';
         header.style.height = `${initialHeaderHeight}px`;
       }
     });
+
+    // Обработка отправки формы контактов
+    const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const formMessage = document.getElementById('form-message') as HTMLDivElement;
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Показываем состояние загрузки
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formMessage.className = 'text-center text-sm hidden';
+        
+        try {
+          const formData = new FormData(contactForm);
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            // Successful submission
+            formMessage.className = 'text-center text-sm text-green-600';
+            formMessage.textContent = result.message;
+            contactForm.reset();
+          } else {
+            // Validation error
+            formMessage.className = 'text-center text-sm text-red-600';
+            formMessage.textContent = result.message;
+          }
+        } catch (error) {
+          // Network error
+          formMessage.className = 'text-center text-sm text-red-600';
+          formMessage.textContent = 'An error occurred while sending. Please try again later.';
+        } finally {
+          // Restore button
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+    }
   });
 </script>

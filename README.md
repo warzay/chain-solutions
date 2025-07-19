@@ -1,34 +1,45 @@
-# Astro Starter Kit: Basics
+# Chain Service Solutions
 
-```sh
-yarn create astro@latest -- --template basics
-```
+Landing page for CSS Cloud Solutions with functional contact form.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 📧 Email Setup
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The contact form is configured to send emails to: `aaafwalex@aol.com`, `craig@chain-serve.com`, `michael@chain-serve.com`, `a.zayets@gmail.com`. 
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+### Option 1: Gmail (recommended)
+1. Configure Gmail with two-factor authentication
+2. Create an app password
+3. Update `src/pages/api/contact.ts` with your credentials
+
+### Option 2: Formspree (easier)
+1. Register at https://formspree.io
+2. Create a form and get the endpoint
+3. Update `src/pages/api/contact-formspree.ts`
+4. Change the form action in `Header.astro` to `/api/contact-formspree`
+
+Detailed instructions in `EMAIL_SETUP.md` file
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
 ├── public/
-│   └── favicon.svg
 ├── src/
+│   ├── assets/
+│   ├── components/
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── pages/
+│   │   └── api/
+│   │       ├── contact.ts
+│   │       └── contact-formspree.ts
+│   ├── scripts/
+│   ├── styles/
+│   └── types/
+├── astro.config.mjs
+├── package.json
+├── tailwind.config.ts
+└── tsconfig.json
 ```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
 ## 🧞 Commands
 
