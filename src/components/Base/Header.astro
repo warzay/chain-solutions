@@ -9,9 +9,9 @@ import Modal from '@components/Base/Modal.astro';
 import Heading from '@components/Base/Heading.astro';
 ---
 
-<header class='sticky top-0 z-50 bg-brand-orange-800 text-white transition-all'>
+<header class='bg-brand-orange-800 text-white'>
   <div
-    class='header container relative flex h-full items-center transition-all ~pt-6/9 ~pb-7.5/9'
+    class='header container relative flex h-full items-center ~pt-6/9 ~pb-7.5/9'
   >
     <div class='flex items-center ~md/2xl:~gap-2/14'>
       <Logo class='~sm/2xl:~w-43/72' />
@@ -89,7 +89,12 @@ import Heading from '@components/Base/Heading.astro';
 
     <Heading tag='h2' class='!text-2xl text-brand-gray-900'>Contact Us</Heading>
 
-    <form id='contact-form' class='mt-6 w-full space-y-8' action="https://formspree.io/f/movljavb" method='POST'>
+    <form
+      id='contact-form'
+      class='mt-6 w-full space-y-8'
+      action='https://formspree.io/f/movljavb'
+      method='POST'
+    >
       <div class='grid grid-cols-1 gap-8 sm:grid-cols-3'>
         <div class='sm:col-span-2'>
           <label
@@ -197,44 +202,34 @@ import Heading from '@components/Base/Heading.astro';
       <div class='flex justify-center'>
         <Button type='submit' class='' id='submit-btn'> Send Message </Button>
       </div>
-      
-      <div id='form-message' class='text-center text-sm hidden'></div>
+
+      <div id='form-message' class='hidden text-center text-sm'></div>
     </form>
   </div>
 </Modal>
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const header = document.querySelector('.header') as HTMLElement;
-    if (!header) {
-      return;
-    }
-
-    const initialHeaderHeight = header.getBoundingClientRect().height;
-    const reducedHeaderHeight = initialHeaderHeight * 0.7;
-
-    header.style.height = `${initialHeaderHeight}px`;
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > initialHeaderHeight) {
-        header.style.height = `${reducedHeaderHeight}px`;
-      } else {
-        header.style.height = `${initialHeaderHeight}px`;
-      }
-    });
+    // Header is now static - no sticky positioning or scroll logic
 
     // Handle contact form submission
-    const contactForm = document.getElementById('contact-form') as HTMLFormElement;
-    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-    const formMessage = document.getElementById('form-message') as HTMLDivElement;
+    const contactForm = document.getElementById(
+      'contact-form'
+    ) as HTMLFormElement;
+    const submitBtn = document.getElementById(
+      'submit-btn'
+    ) as HTMLButtonElement;
+    const formMessage = document.getElementById(
+      'form-message'
+    ) as HTMLDivElement;
 
     if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
+      contactForm.addEventListener('submit', e => {
         // Show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
         formMessage.className = 'text-center text-sm hidden';
-        
+
         // Form will be submitted to Formspree automatically
         // Formspree will handle the response and redirect
         setTimeout(() => {
